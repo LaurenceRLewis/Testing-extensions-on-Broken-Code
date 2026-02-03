@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Definition Lists | Broken Code Test Site</title>
+
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">🧪</span>
+          <span class="brand-name">Broken Code Test Site</span>
+        </div>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/tests/">Tests</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container page">
+      <div class="page-heading">
+        <h1>Definition list scenarios</h1>
+        <p class="lede">
+          These scenarios are intentionally incorrect. Use them to validate definition list structure checks and semantics.
+        </p>
+      </div>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Valid baseline</h2>
+          <div class="badges">
+            <span class="badge badge-ok">Valid</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Expected: tools should not flag this list.
+        </p>
+
+        <div class="scenario">
+          <div class="scenario-preview">
+            <dl class="dl-sample">
+              <dt>CPU</dt>
+              <dd>Central Processing Unit</dd>
+
+              <dt>RAM</dt>
+              <dd>Random Access Memory</dd>
+
+              <dt>GPU</dt>
+              <dd>Graphics Processing Unit</dd>
+            </dl>
+          </div>
+
+          <div class="scenario-code">
+            <pre class="code" data-code-source="dl-valid"></pre>
+
+            <template id="dl-valid">
+              <dl>
+                <dt>CPU</dt>
+                <dd>Central Processing Unit</dd>
+
+                <dt>RAM</dt>
+                <dd>Random Access Memory</dd>
+
+                <dt>GPU</dt>
+                <dd>Graphics Processing Unit</dd>
+              </dl>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>DD before DT</h2>
+          <div class="badges">
+            <span class="badge badge-broken">Broken</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Expected: flag a definition description appearing before its term.
+        </p>
+
+        <div class="scenario">
+          <div class="scenario-preview">
+            <dl class="dl-sample">
+              <dd>HyperText Markup Language</dd>
+              <dt>HTML</dt>
+              <dd>Cascading Style Sheets</dd>
+              <dt>CSS</dt>
+            </dl>
+          </div>
+
+          <div class="scenario-code">
+            <pre class="code" data-code-source="dl-dd-before-dt"></pre>
+
+            <template id="dl-dd-before-dt">
+              <dl>
+                <dd>HyperText Markup Language</dd>
+                <dt>HTML</dt>
+                <dd>Cascading Style Sheets</dd>
+                <dt>CSS</dt>
+              </dl>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>DT with no following DD</h2>
+          <div class="badges">
+            <span class="badge badge-broken">Broken</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Expected: flag terms that have no description.
+        </p>
+
+        <div class="scenario">
+          <div class="scenario-preview">
+            <dl class="dl-sample">
+              <dt>Term with no description</dt>
+              <dt>Another term</dt>
+              <dd>Description exists only for the second term, but structure is ambiguous.</dd>
+            </dl>
+          </div>
+
+          <div class="scenario-code">
+            <pre class="code" data-code-source="dl-missing-dd"></pre>
+
+            <template id="dl-missing-dd">
+              <dl>
+                <dt>Term with no description</dt>
+                <dt>Another term</dt>
+                <dd>Description exists only for the second term, but structure is ambiguous.</dd>
+              </dl>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Orphan DD with no preceding DT</h2>
+          <div class="badges">
+            <span class="badge badge-broken">Broken</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Expected: flag description items that do not have a term.
+        </p>
+
+        <div class="scenario">
+          <div class="scenario-preview">
+            <dl class="dl-sample">
+              <dt>Wi-Fi</dt>
+              <dd>Wireless networking</dd>
+              <dd>This description has no term.</dd>
+            </dl>
+          </div>
+
+          <div class="scenario-code">
+            <pre class="code" data-code-source="dl-orphan-dd"></pre>
+
+            <template id="dl-orphan-dd">
+              <dl>
+                <dt>Wi-Fi</dt>
+                <dd>Wireless networking</dd>
+                <dd>This description has no term.</dd>
+              </dl>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Invalid children inside DL</h2>
+          <div class="badges">
+            <span class="badge badge-broken">Broken</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Expected: flag elements inside a DL that are not DT or DD.
+        </p>
+
+        <div class="scenario">
+          <div class="scenario-preview">
+            <dl class="dl-sample">
+              <dt>Keyboard</dt>
+              <dd>Input device</dd>
+              <p>This paragraph is an invalid child of a DL.</p>
+              <dt>Mouse</dt>
+              <dd>Pointer device</dd>
+            </dl>
+          </div>
+
+          <div class="scenario-code">
+            <pre class="code" data-code-source="dl-invalid-child"></pre>
+
+            <template id="dl-invalid-child">
+              <dl>
+                <dt>Keyboard</dt>
+                <dd>Input device</dd>
+                <p>This paragraph is an invalid child of a DL.</p>
+                <dt>Mouse</dt>
+                <dd>Pointer device</dd>
+              </dl>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Div wrappers inside DL</h2>
+          <div class="badges">
+            <span class="badge badge-broken">Broken</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Expected: flag wrapper elements that break the direct child relationship of DT/DD within DL.
+        </p>
+
+        <div class="scenario">
+          <div class="scenario-preview">
+            <dl class="dl-sample">
+              <div class="dl-wrapper">
+                <dt>HTTP</dt>
+                <dd>Hypertext Transfer Protocol</dd>
+              </div>
+
+              <div class="dl-wrapper">
+                <dt>HTTPS</dt>
+                <dd>HTTP over TLS</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="scenario-code">
+            <pre class="code" data-code-source="dl-div-wrappers"></pre>
+
+            <template id="dl-div-wrappers">
+              <dl>
+                <div>
+                  <dt>HTTP</dt>
+                  <dd>Hypertext Transfer Protocol</dd>
+                </div>
+
+                <div>
+                  <dt>HTTPS</dt>
+                  <dd>HTTP over TLS</dd>
+                </div>
+              </dl>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>DL replaced with DIV and no roles</h2>
+          <div class="badges">
+            <span class="badge badge-broken">Broken</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Expected: flag a fake definition list that uses generic containers without semantics.
+        </p>
+
+        <div class="scenario">
+          <div class="scenario-preview">
+            <div class="dl-fake">
+              <div class="dl-term">API</div>
+              <div class="dl-def">Application Programming Interface</div>
+              <div class="dl-term">URL</div>
+              <div class="dl-def">Uniform Resource Locator</div>
+            </div>
+          </div>
+
+          <div class="scenario-code">
+            <pre class="code" data-code-source="dl-fake-div"></pre>
+
+            <template id="dl-fake-div">
+              <div>
+                <div class="dl-term">API</div>
+                <div class="dl-def">Application Programming Interface</div>
+                <div class="dl-term">URL</div>
+                <div class="dl-def">Uniform Resource Locator</div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Role misuse</h2>
+          <div class="badges">
+            <span class="badge badge-broken">Broken</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Expected: flag inappropriate ARIA role overrides on semantic DL content.
+        </p>
+
+        <div class="scenario">
+          <div class="scenario-preview">
+            <dl class="dl-sample" role="list">
+              <dt role="listitem">Term incorrectly mapped as listitem</dt>
+              <dd role="listitem">Definition incorrectly mapped as listitem</dd>
+            </dl>
+          </div>
+
+          <div class="scenario-code">
+            <pre class="code" data-code-source="dl-role-misuse"></pre>
+
+            <template id="dl-role-misuse">
+              <dl role="list">
+                <dt role="listitem">Term incorrectly mapped as listitem</dt>
+                <dd role="listitem">Definition incorrectly mapped as listitem</dd>
+              </dl>
+            </template>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">Intentionally non-compliant. Use for testing only.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/ts/main.ts"></script>
+    <script type="module" src="/src/ts/page-tests.ts"></script>
+  </body>
+</html>
