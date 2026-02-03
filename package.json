@@ -1,0 +1,16 @@
+{
+  "name": "testing-extensions-on-broken-code",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -p tsconfig.json && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "vite": "^6.1.0",
+    "sass": "^1.84.0"
+  }
+}

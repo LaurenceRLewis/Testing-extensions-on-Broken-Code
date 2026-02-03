@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Headings | Broken Code Test Site</title>
+
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">🧪</span>
+          <span class="brand-name">Broken Code Test Site</span>
+        </div>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/tests/">Tests</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container page">
+      <div class="page-heading">
+        <h1>Headings scenarios</h1>
+        <p class="lede">
+          These scenarios are intentionally incorrect. Use them to verify heading-outline checks and structure heuristics.
+        </p>
+      </div>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Skipped heading levels</h2>
+          <div class="badges">
+            <span class="badge badge-broken">Broken</span>
+            <span class="badge badge-wcag">WCAG 2.2: 1.3.1</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Expected: tools should flag a jump from H1 to H4 and missing intermediate levels.
+        </p>
+
+        <div class="scenario">
+          <div class="scenario-preview">
+            <h1>Page title</h1>
+            <h4>Section heading incorrectly starts at H4</h4>
+            <p>Content under a heading that skipped levels.</p>
+            <h2>Another section</h2>
+            <h5>Nested subsection incorrectly starts at H5</h5>
+          </div>
+
+          <div class="scenario-code">
+            <pre class="code" data-code-source="heading-skip"></pre>
+
+            <template id="heading-skip">
+              <h1>Page title</h1>
+              <h4>Section heading incorrectly starts at H4</h4>
+              <p>Content under a heading that skipped levels.</p>
+              <h2>Another section</h2>
+              <h5>Nested subsection incorrectly starts at H5</h5>
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Fake headings using divs</h2>
+          <div class="badges">
+            <span class="badge badge-broken">Broken</span>
+            <span class="badge badge-wcag">WCAG 2.2: 1.3.1</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Expected: tools should detect visually styled headings that are not semantic headings.
+        </p>
+
+        <div class="scenario">
+          <div class="scenario-preview">
+            <div class="fake-heading">This looks like a heading but is a div</div>
+            <p>Body text follows.</p>
+            <div class="fake-heading small">Another fake heading</div>
+            <p>More body text follows.</p>
+          </div>
+
+          <div class="scenario-code">
+            <pre class="code" data-code-source="fake-headings"></pre>
+
+            <template id="fake-headings">
+              <div class="fake-heading">This looks like a heading but is a div</div>
+              <p>Body text follows.</p>
+              <div class="fake-heading small">Another fake heading</div>
+              <p>More body text follows.</p>
+            </template>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">Intentionally non-compliant. Use for testing only.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/ts/main.ts"></script>
+    <script type="module" src="/src/ts/page-tests.ts"></script>
+  </body>
+</html>

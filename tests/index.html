@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tests | Broken Code Test Site</title>
+
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">🧪</span>
+          <span class="brand-name">Broken Code Test Site</span>
+        </div>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/tests/">Tests</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container page">
+      <h1>Tests index</h1>
+
+      <div class="card">
+        <p class="lede">
+          Pick a test page. Each page contains intentionally broken patterns for tool validation.
+        </p>
+      </div>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Structure</h2>
+          <ul class="link-list">
+            <li><a href="/tests/headings.html">Headings scenarios</a></li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Start here</h2>
+          <ul class="link-list">
+            <li><a href="/tests/template.html">Template for new test pages</a></li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">Intentionally non-compliant. Use for testing only.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/ts/main.ts"></script>
+  </body>
+</html>

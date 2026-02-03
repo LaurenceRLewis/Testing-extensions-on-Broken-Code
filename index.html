@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Broken Code Test Site</title>
+
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">🧪</span>
+          <span class="brand-name">Broken Code Test Site</span>
+        </div>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/tests/">Tests</a>
+          <a class="nav-link" href="https://github.com/LaurenceRLewis/Testing-extensions-on-Broken-Code" target="_blank" rel="noreferrer noopener">
+            Repo
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container page">
+      <h1>Deliberately broken accessibility test pages</h1>
+
+      <div class="card">
+        <p class="lede">
+          This site is intentionally non-compliant. Each test page includes broken patterns so you can validate
+          audit tools, extensions, and workflows against known failures.
+        </p>
+
+        <ul class="bullets">
+          <li>Vanilla HTML pages, with SCSS styling and TypeScript utilities where useful</li>
+          <li>Each test page can include multiple scenarios with clear labels</li>
+          <li>Keep broken code obvious, reproducible, and stable</li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn" href="/tests/">Open tests index</a>
+          <a class="btn btn-secondary" href="/tests/template.html">Test page template</a>
+        </div>
+      </div>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Suggested categories</h2>
+          <ul class="bullets">
+            <li>Headings and structure</li>
+            <li>Forms and labels</li>
+            <li>Images and names</li>
+            <li>Keyboard and focus</li>
+            <li>ARIA misuse</li>
+            <li>Tables and relationships</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Test design rules</h2>
+          <ul class="bullets">
+            <li>One page per theme</li>
+            <li>Multiple scenarios per page</li>
+            <li>Mark expected failures clearly</li>
+            <li>Avoid random behaviour or flaky dynamic DOM unless you are testing that</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">
+          Built for intentionally broken test coverage. Do not use these patterns in production.
+        </p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/ts/main.ts"></script>
+  </body>
+</html>

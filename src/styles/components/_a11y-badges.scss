@@ -1,0 +1,30 @@
+.badges {
+  display: inline-flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.03);
+  white-space: nowrap;
+}
+
+.badge-broken {
+  border-color: rgba(255, 125, 240, 0.5);
+  background: rgba(255, 125, 240, 0.14);
+  color: var(--text);
+}
+
+.badge-wcag {
+  border-color: rgba(139, 211, 255, 0.45);
+  background: rgba(139, 211, 255, 0.12);
+  color: var(--text);
+}

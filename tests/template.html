@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Template | Broken Code Test Site</title>
+
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">🧪</span>
+          <span class="brand-name">Broken Code Test Site</span>
+        </div>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/tests/">Tests</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="container page">
+      <div class="page-heading">
+        <h1>Test page title</h1>
+        <p class="lede">
+          Briefly explain what is being tested and what tools should detect.
+        </p>
+      </div>
+
+      <section class="card">
+        <div class="card-header">
+          <h2>Scenario 1 title</h2>
+          <div class="badges">
+            <span class="badge badge-broken">Broken</span>
+            <span class="badge badge-wcag">WCAG: add reference</span>
+          </div>
+        </div>
+
+        <p class="muted">
+          Explain expected failures. Keep it concrete.
+        </p>
+
+        <div class="scenario">
+          <div class="scenario-preview">
+            <p>Put the broken markup here.</p>
+          </div>
+
+          <div class="scenario-code">
+            <pre class="code" data-code-source="scenario-1"></pre>
+
+            <template id="scenario-1">
+              <div>
+                <p>Example broken snippet</p>
+              </div>
+            </template>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p class="muted">Intentionally non-compliant. Use for testing only.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/ts/main.ts"></script>
+    <script type="module" src="/src/ts/page-tests.ts"></script>
+  </body>
+</html>
